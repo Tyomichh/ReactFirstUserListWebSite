@@ -1,13 +1,11 @@
 import React from 'react';
-import Button from './Button';
+import "../Styles/header.css";
+
 
 const Header = (props) => {
-    console.log(props);
     return (
         <>
-        <div>{props.title}</div>
-        <Button text="Click me!" />
-        <Button/>
+        <div className="header">{props.title}</div>
         </>
     )
 };

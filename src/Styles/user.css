@@ -1,0 +1,20 @@
+.user {
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #009688;
+}
+
+.userIcons {
+    float: right;
+    color: #004d40;
+    cursor: pointer;
+    transform: scale(2);
+}
+
+.userIcons:nth-child(2) {
+    margin-right: 25px;
+}
+
+.userIcons:hover {
+    opacity: 0.5;
+}

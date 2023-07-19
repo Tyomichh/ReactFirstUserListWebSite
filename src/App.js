@@ -1,32 +1,49 @@
 import React, { useState } from 'react';
 import Header from './Components/Header'
-import Image from './Components/Image'
-import logoOg from './img/logo.png'
+import Users from './Components/Users';
+import AddUser from './Components/AddUser';
+
 
 const App = () => {
 
-    const [helpText, setClick] = useState("Help Text");
-    const [userData, setInput] = useState("");
+    const [users, setUsers] = useState([{
+        id: 1,
+        firstName: 'Jhon',
+        lastName: 'Doe',
+        bio: 'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+        age: 60,
+        isHappy: true
+    },
+    {
+        id: 2,
+        firstName: 'Leruanna',
+        lastName: 'Mackmilan',
+        bio: 'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem em ipsum lorem ipsum lorem ipsum lorem',
+        age: 32,
+        isHappy: false
+    }]);
 
-    const inputClick = () => {
-        setClick("Changed")
-        console.log("Click")
-    };
+    const createUser = (user) => {
+        console.log(user);
+        console.log(users);
+        const id = users.length + 1;
+        setUsers([...users, { ...user, id }]);
+    }
 
     return (
         <>
-            <Header title={"Shapka saita"} />
+            <Header title={"Users list"} />
 
-            <h1>{helpText}</h1>
-            <h1>{userData}</h1>
-            <input value={userData} onChange={event => setInput(event.target.value)} placeholder={helpText} onClick={inputClick} />
-            <p>{helpText === "Help Text!" ? "Yes" : "no"}</p>
-            <div>
-                BROOOOOOOOOOOOOO
-            </div>
-            <Image importedImg={logoOg} altParam={"Image"} />
+            <main>
+                <Users users={users} />
+            </main>
+
+            <aside>
+                <AddUser onAddUser={createUser} />
+            </aside>
         </>
     )
+
 };
 
 export default App;
