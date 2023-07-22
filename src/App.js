@@ -23,19 +23,31 @@ const App = () => {
         isHappy: false
     }]);
 
-    const createUser = (user) => {
-        console.log(user);
-        console.log(users);
-        const id = users.length + 1;
-        setUsers([...users, { ...user, id }]);
+    const deleteUser = (id) => {
+        setUsers(users.filter((el) => el.id !== id))
     }
+
+    const createUser = (user) => {
+        const id = users.length + 1;
+        const newPost = {
+            id,
+            ...user
+        }
+        setUsers([...users, newPost]);
+    }
+    console.log(users)
+
+    const editUser = (user) => {
+        setUsers(prevUsers => prevUsers.map(prevUser => prevUser.id === user.id ? user : prevUser));
+    };
+
 
     return (
         <>
             <Header title={"Users list"} />
 
             <main>
-                <Users users={users} />
+                <Users users={users} onDelete={deleteUser} onEdit={editUser} />
             </main>
 
             <aside>

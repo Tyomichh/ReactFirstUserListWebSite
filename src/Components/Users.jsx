@@ -7,7 +7,7 @@ const Users = (props) => {
         return (
             <div>
                 {props.users.map(el => (
-                    <User key={el.id} user={el} />
+                    <User key={el.id} user={el} onDelete={props.onDelete} onEdit={props.onEdit} />
                 ))}
             </div>
         );
